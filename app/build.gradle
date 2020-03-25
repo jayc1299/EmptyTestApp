@@ -7,7 +7,7 @@ def appMinor =   0   // The minor number is maximum 99 (2 digits)
 def appRelease = 0   // The release number is maximum 99 (2 digits)
 //  **************************************************************************************
 //  ***** IMPORTANT: JUST INCREASE THIS NUMBER WHEN YOU ARE TRIGGERING A NEW BUILD  ******
-def appBUILD =   1   // The build number is maximum 999 (3 digits)
+def appBUILD =   2   // The build number is maximum 999 (3 digits)
 //  **************************************************************************************
 
 
