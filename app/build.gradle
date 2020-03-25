@@ -1,13 +1,30 @@
 apply plugin: 'com.android.application'
 
+//  The version code is made of from the digits in the version name
+//  We will follow (Major).(Minor).(Release).(Build)  numbering system where:
+def appMajor =   1   // The major number is maximum 213 (3 digits)
+def appMinor =   0   // The minor number is maximum 99 (2 digits)
+def appRelease = 0   // The release number is maximum 99 (2 digits)
+//  **************************************************************************************
+//  ***** IMPORTANT: JUST INCREASE THIS NUMBER WHEN YOU ARE TRIGGERING A NEW BUILD  ******
+def appBUILD =   1   // The build number is maximum 999 (3 digits)
+//  **************************************************************************************
+
+
+// In Android version name "1.01.03.001" will be corresponding to version code="10103001"
+// So the maximum numbers for major, minor, release and build will be as follows 213.99.99.999
+// See https://confluence.parkmobile.com/display/EUENGINEERING/Application+Versioning for more detail
+def appVersionCode =  ("${appMajor}".toInteger()*10000000)+("${appMinor}".toInteger()*100000)+("${appRelease}".toInteger()*1000) +"${appBUILD}".toInteger()
+def appVersionName = "${appMajor}.${appMinor}.${appRelease}.${appBUILD}"
+
 android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.test.emptytestapp"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode "${appVersionCode}".toInteger()
+        versionName "${appVersionName}"
     }
 
     buildTypes {
@@ -23,5 +40,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     testImplementation 'junit:junit:4.12'
 }
